@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     width="100%" height="300" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet">
+    
+    <style>
+        .wave-dot {
+            fill: rgb(255, 0, 0);
+            opacity: 0.7;
+        }
+        
+        .top-wave {
+            animation: wave-motion 8s infinite linear;
+        }
+        
+        .middle-wave {
+            animation: wave-motion 6s infinite linear;
+        }
+        
+        .bottom-wave {
+            animation: wave-motion 10s infinite linear;
+        }
+        
+        @keyframes wave-motion {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-1000px);
+            }
+        }
+    </style>
+
+    <!-- Top Wave (Large Dots) -->
+    <g class="top-wave">
+        <defs>
+            <pattern id="top-wave" x="0" y="0" width="1000" height="100" patternUnits="userSpaceOnUse">
+                <g>
+                    <circle class="wave-dot" cx="0" cy="50" r="9"/>
+                    <circle class="wave-dot" cx="100" cy="50" r="8.5"/>
+                    <circle class="wave-dot" cx="200" cy="50" r="8"/>
+                    <circle class="wave-dot" cx="300" cy="50" r="7.5"/>
+                    <circle class="wave-dot" cx="400" cy="50" r="7"/>
+                    <circle class="wave-dot" cx="500" cy="50" r="6.5"/>
+                    <circle class="wave-dot" cx="600" cy="50" r="6"/>
+                    <circle class="wave-dot" cx="700" cy="50" r="5.5"/>
+                    <circle class="wave-dot" cx="800" cy="50" r="5"/>
+                    <circle class="wave-dot" cx="900" cy="50" r="4.5"/>
+                </g>
+            </pattern>
+        </defs>
+        <rect x="0" y="0" width="2000" height="100" fill="url(#top-wave)"/>
+    </g>
+
+    <!-- Middle Wave (Medium Dots) -->
+    <g class="middle-wave">
+        <defs>
+            <pattern id="middle-wave" x="0" y="0" width="1000" height="100" patternUnits="userSpaceOnUse">
+                <g>
+                    <circle class="wave-dot" cx="0" cy="50" r="6"/>
+                    <circle class="wave-dot" cx="100" cy="50" r="5.8"/>
+                    <circle class="wave-dot" cx="200" cy="50" r="5.6"/>
+                    <circle class="wave-dot" cx="300" cy="50" r="5.4"/>
+                    <circle class="wave-dot" cx="400" cy="50" r="5.2"/>
+                    <circle class="wave-dot" cx="500" cy="50" r="5"/>
+                    <circle class="wave-dot" cx="600" cy="50" r="4.8"/>
+                    <circle class="wave-dot" cx="700" cy="50" r="4.6"/>
+                    <circle class="wave-dot" cx="800" cy="50" r="4.4"/>
+                    <circle class="wave-dot" cx="900" cy="50" r="4.2"/>
+                </g>
+            </pattern>
+        </defs>
+        <rect x="0" y="100" width="2000" height="100" fill="url(#middle-wave)"/>
+    </g>
+
+    <!-- Bottom Wave (Small Dots) -->
+    <g class="bottom-wave">
+        <defs>
+            <pattern id="bottom-wave" x="0" y="0" width="1000" height="100" patternUnits="userSpaceOnUse">
+                <g>
+                    <circle class="wave-dot" cx="0" cy="50" r="3"/>
+                    <circle class="wave-dot" cx="100" cy="50" r="2.9"/>
+                    <circle class="wave-dot" cx="200" cy="50" r="2.8"/>
+                    <circle class="wave-dot" cx="300" cy="50" r="2.7"/>
+                    <circle class="wave-dot" cx="400" cy="50" r="2.6"/>
+                    <circle class="wave-dot" cx="500" cy="50" r="2.5"/>
+                    <circle class="wave-dot" cx="600" cy="50" r="2.4"/>
+                    <circle class="wave-dot" cx="700" cy="50" r="2.3"/>
+                    <circle class="wave-dot" cx="800" cy="50" r="2.2"/>
+                    <circle class="wave-dot" cx="900" cy="50" r="2.1"/>
+                </g>
+            </pattern>
+        </defs>
+        <rect x="0" y="200" width="2000" height="100" fill="url(#bottom-wave)"/>
+    </g>
+</svg> 
