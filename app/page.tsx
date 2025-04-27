@@ -8,7 +8,7 @@ export default function GCCServicePage() {
   return (
     <div className="flex flex-col min-h-screen">
     
-      <section className="relative w-full h-[500px] overflow-hidden">
+      <section className="relative w-full h-[500px] overflow-hidden rounded-b-4xl">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -23,7 +23,7 @@ export default function GCCServicePage() {
         <div className="container mx-auto px-4 pt-28 relative z-30">
           <div className="max-w-xl">
             <Reveal delay={0}>
-              <h1 className="text-5xl font-bold text-white ml-36 mb-8 mt-20">GCC as a Service</h1>
+              <h1 className="text-5xl font-bold text-white ml-32 mb-8 mt-30">GCC as a Service</h1>
             </Reveal>
             <Reveal delay={0.1}>
               <Link
@@ -43,7 +43,7 @@ export default function GCCServicePage() {
           <AnimatedBackground />
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 ">
             <div>
               <Reveal delay={0}>
                 <h2 className="text-4xl font-bold text-[#7A2048] leading-tight">
@@ -77,7 +77,7 @@ export default function GCCServicePage() {
       </section>
 
       {/* Key Offerings Section */}
-      <section className="py-16 md:py-20 bg-[#0A1E40]">
+      <section className="py-16 md:py-20 bg-[#0A1E40] rounded-t-4xl rounded-b-4xl">
         <div className="container mx-auto px-4">
           <Reveal delay={0}>
             <h2 className="text-3xl font-bold text-white text-center mb-12">Key Offerings</h2>
