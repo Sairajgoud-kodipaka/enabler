@@ -86,7 +86,7 @@ export default function GCCServicePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1 */}
             <Reveal delay={0.05}>
-              <div className="bg-[#0B2A54] rounded-lg p-6 hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="bg-[#0B2A54] rounded-lg p-6 min-h-[300px] flex flex-col h-full hover:shadow-xl transition-transform transform hover:-translate-y-2">
                 <Building className="w-10 h-10 text-white mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Infrastructure as a Service</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
@@ -99,7 +99,7 @@ export default function GCCServicePage() {
 
             {/* Card 2 */}
             <Reveal delay={0.1}>
-              <div className="bg-[#0B2A54] rounded-lg p-6 hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="bg-[#0B2A54] rounded-lg p-6 min-h-[300px] flex flex-col h-full hover:shadow-xl transition-transform transform hover:-translate-y-2">
                 <Users className="w-10 h-10 text-white mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Talent Acquisition and Workforce Management</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
@@ -111,7 +111,7 @@ export default function GCCServicePage() {
 
             {/* Card 3 */}
             <Reveal delay={0.15}>
-              <div className="bg-[#0B2A54] rounded-lg p-6 hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="bg-[#0B2A54] rounded-lg p-6 min-h-[300px] flex flex-col h-full hover:shadow-xl transition-transform transform hover:-translate-y-2">
                 <LightbulbIcon className="w-10 h-10 text-white mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Strategic Advisory and Innovation</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
@@ -123,7 +123,7 @@ export default function GCCServicePage() {
 
             {/* Card 4 */}
             <Reveal delay={0.2}>
-              <div className="bg-[#0B2A54] rounded-lg p-6 hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="bg-[#0B2A54] rounded-lg p-6 min-h-[300px] flex flex-col h-full hover:shadow-xl transition-transform transform hover:-translate-y-2">
                 <ClipboardList className="w-10 h-10 text-white mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Business Operations and Compliance</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
@@ -135,7 +135,7 @@ export default function GCCServicePage() {
 
             {/* Card 5 */}
             <Reveal delay={0.25}>
-              <div className="bg-[#0B2A54] rounded-lg p-6 hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="bg-[#0B2A54] rounded-lg p-6 min-h-[300px] flex flex-col h-full hover:shadow-xl transition-transform transform hover:-translate-y-2">
                 <Code className="w-10 h-10 text-white mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Technology Delivery and Integration</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
@@ -147,7 +147,7 @@ export default function GCCServicePage() {
 
             {/* Card 6 */}
             <Reveal delay={0.3}>
-              <div className="bg-[#0B2A54] rounded-lg p-6 hover:shadow-xl transition-transform transform hover:-translate-y-2">
+              <div className="bg-[#0B2A54] rounded-lg p-6 min-h-[300px] flex flex-col h-full hover:shadow-xl transition-transform transform hover:-translate-y-2">
                 <Network className="w-10 h-10 text-white mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Enterprise Integration</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
