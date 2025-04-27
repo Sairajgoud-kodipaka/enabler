@@ -1,21 +1,33 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Users, Lightbulb, BarChart2, ChevronDown, ChevronRight, Building2, Layers, Briefcase, Network, BookOpen, Mail } from "lucide-react"
+import { ChevronRight, BookOpen } from "lucide-react"
 
 const edgeCards = [
   {
-    icon: <img src="/escalator.png" alt="Accelerate" className="w-12 h-12 mb-2" />, title: "Accelerate your GCC setup", desc: "with a trusted partner"
+    icon: (
+      <Image src="/escalator.png" alt="Accelerate" width={48} height={48} className="mb-2 object-contain" />
+    ),
+    title: "Accelerate your GCC setup",
+    desc: "with a trusted partner",
   },
   {
-    icon: <img src="/twoperson.png" alt="Build future-ready centers" className="w-12 h-12 mb-2" />, title: "Build future-ready centers", desc: "with Enablr, your partner of choice"
+    icon: (
+      <Image src="/twoperson.png" alt="Build future-ready centers" width={48} height={48} className="mb-2 object-contain" />
+    ),
+    title: "Build future-ready centers",
+    desc: "with Enablr, your partner of choice",
   },
   {
-    icon: <img src="/bulbheads.png" alt="Maintain momentum" className="w-12 h-12 mb-2" />, title: "Maintain momentum", desc: "with transparent, milestone-driven execution"
+    icon: (
+      <Image src="/bulbheads.png" alt="Maintain momentum" width={48} height={48} className="mb-2 object-contain" />
+    ),
+    title: "Maintain momentum",
+    desc: "with transparent, milestone-driven execution",
   },
 ]
 
 const solutions = [
-  { title: "Talent & HR", desc: "Streamline hiring, onboarding, and workforce management with scalable HR frameworks tailored to your GCC's growth needs." },
+  { title: "Talent & HR", desc: "Streamline hiring, onboarding, and workforce management with scalable HR frameworks tailored to your GCC&apos;s growth needs." },
   { title: "Business Operations", desc: "Optimize your business ops for speed, compliance, and scale." },
   { title: "Workspace", desc: "Future-ready workspaces for productivity and well-being." },
   { title: "Technology Enablement", desc: "Leverage tech to drive innovation and efficiency." },
@@ -26,7 +38,7 @@ const engageCards = [
 ]
 
 const highlights = [
-  { img: "/engage-bot.png", title: "Your GCC is in expert hands, steered by leaders who've seen it before, and done it well." },
+  { img: "/engage-bot.png", title: "Your GCC is in expert hands, steered by leaders who&apos;ve seen it before, and done it well." },
   { img: "/engage-modular.png", title: "Fueling your vision with the right people talent and tools" },
   { img: "/hero-highlight.png", title: "Flexible engagement models for seamless growth" },
   { img: "/engage-e2e.png", title: "Transparent processes, powered by on-ground expertise" },
@@ -43,9 +55,9 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen bg-[#F8F9FB]">
       {/* Hero Section */}
       <section className="relative w-full h-[420px] md:h-[480px] overflow-hidden rounded-b-3xl">
-        <Image src="/hero-cityscape.png" alt="Hero" fill className="object-cover" priority />
-        <div className="absolute inset-0 "/>
-        <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-0 max-w-2xl mx-auto md:ml-24">
+        <Image src="/hero-cityscape.png" alt="Hero" fill className="object-cover object-center" priority />
+        <div className="absolute inset-0"/>
+        <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-0 max-w-2xl mx-auto md:ml-20">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 mt-24 md:mt-0 leading-tight">Build on proven experience<br />and enterprise-grade quality</h1>
           <Link href="#" className="inline-block bg-white text-[#0A1E40] font-semibold px-7 py-2 rounded shadow hover:bg-gray-100 transition-colors text-lg">Get started</Link>
         </div>
@@ -61,10 +73,10 @@ export default function HomePage() {
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-[#0A1E40] mb-6">The <span className="text-[#E94B8A]">Enablr Edge</span></h2>
-          <p className="text-[#0A1E40] mb-8 max-w-2xl">At Enablr, we work with you to build your global capability center (GCC) the right way. Designed for speed, scale, and quality at every step. Here's how we help you stay ahead:</p>
+          <p className="text-[#0A1E40] mb-8 max-w-2xl">At Enablr, we work with you to build your global capability center (GCC) the right way. Designed for speed, scale, and quality at every step. Here&apos;s how we help you stay ahead:</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {edgeCards.map((card, i) => (
-              <div key={i} className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200">
+            {edgeCards.map(card => (
+              <div key={card.title} className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200">
                 {card.icon}
                 <h3 className="text-[#E94B8A] font-semibold text-lg mb-1">{card.title}</h3>
                 <p className="text-[#0A1E40] text-sm">{card.desc}</p>
@@ -83,7 +95,7 @@ export default function HomePage() {
           <div className="flex-1 w-full">
             <h3 className="text-xl font-bold text-[#0A1E40] mb-4">our <span className="text-[#E94B8A]">Solutions</span></h3>
             <div className="space-y-2">
-              {solutions.map((sol, i) => (
+              {solutions.map(sol => (
                 <div key={sol.title} className="bg-white rounded-lg shadow flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-[#FDE6F0] transition-colors">
                   <div>
                     <h4 className="font-semibold text-[#0A1E40]">{sol.title}</h4>
@@ -96,7 +108,7 @@ export default function HomePage() {
             <Link href="#" className="mt-4 inline-block bg-[#0A1E40] text-white font-semibold px-5 py-2 rounded shadow hover:bg-[#6C3EB8] transition-colors">Talk to our experts</Link>
           </div>
           <div className="flex-1 w-full flex justify-center items-center">
-            <Image src="/solutions-people.png" alt="Solutions" width={320} height={320} className="rounded-xl object-cover shadow-lg" />
+            <Image src="/solutions-people.png" alt="Solutions" width={320} height={320} className="rounded-xl object-cover object-center shadow-lg" />
           </div>
         </div>
       </section>
@@ -106,10 +118,10 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-xl font-bold text-[#E94B8A] mb-6">Engage with us</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {engageCards.map((card, i) => (
-              <div key={i} className="bg-[#F8F9FB] rounded-xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition-shadow duration-200">
-                <div className="w-full h-28 mb-3 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
-                  <Image src={card.img} alt={card.title} width={120} height={80} className="object-cover" />
+            {engageCards.map(card => (
+              <div key={card.title} className="bg-[#F8F9FB] rounded-xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition-shadow duration-200">
+                <div className="w-full h-28 mb-3 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden relative">
+                  <Image src={card.img} alt={card.title} fill className="object-cover object-center w-full h-full rounded-lg" />
                 </div>
                 <h4 className="text-[#0A1E40] font-semibold text-base mb-2 text-center">{card.title}</h4>
                 <Link href="#" className="text-[#E94B8A] font-medium text-sm hover:underline">Know More</Link>
@@ -124,10 +136,10 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-xl font-bold text-[#E94B8A] mb-6">Key Highlights</h3>
           <div className="flex gap-4 overflow-x-auto pb-2">
-            {highlights.map((h, i) => (
-              <div key={i} className="min-w-[220px] bg-white rounded-xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition-shadow duration-200">
-                <div className="w-full h-24 mb-2 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
-                  <Image src={h.img} alt={h.title} width={120} height={80} className="object-cover" />
+            {highlights.map(h => (
+              <div key={h.title} className="min-w-[220px] bg-white rounded-xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition-shadow duration-200">
+                <div className="w-full h-24 mb-2 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden relative">
+                  <Image src={h.img} alt={h.title} fill className="object-cover object-center w-full h-full rounded-lg" />
                 </div>
                 <p className="text-[#0A1E40] text-sm text-center font-medium">{h.title}</p>
               </div>
@@ -141,8 +153,8 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-xl font-bold text-[#E94B8A] mb-6">Blog <span className="text-[#0A1E40]">Insights on GCC Trends</span></h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {blogCards.map((b, i) => (
-              <div key={i} className="bg-[#F8F9FB] rounded-xl shadow-md p-6 flex flex-col items-center hover:shadow-lg transition-shadow duration-200">
+            {blogCards.map(b => (
+              <div key={b.title} className="bg-[#F8F9FB] rounded-xl shadow-md p-6 flex flex-col items-center hover:shadow-lg transition-shadow duration-200">
                 <div className="w-full h-24 mb-3 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
                   <BookOpen className="w-10 h-10 text-[#E94B8A]" />
                 </div>
