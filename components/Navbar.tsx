@@ -52,7 +52,7 @@ export default function Navbar() {
               <Link key={item.label} href={item.href!} className="text-[#0A1E40] font-medium hover:text-[#6C3EB8] transition-colors">{item.label}</Link>
             )
           )}
-          <Link href="#" className="ml-4 px-5 py-2 rounded-md bg-[#6C3EB8] text-white font-semibold shadow hover:bg-[#7A2048] transition-colors">Get Started</Link>
+          <Link href="#" className="ml-4 px-5 py-2 rounded-md bg-[#6C3EB8] text-white font-semibold shadow hover:bg-slate-900 transition-colors">Get Started</Link>
         </div>
         {/* Mobile Nav (Hamburger) */}
         <button className="md:hidden p-2 rounded hover:bg-gray-100">

@@ -12,6 +12,15 @@ module.exports = {
         secondary: "#E94B8A",
         background: "#F8F9FB",
         "form-bg": "#FFF3F3",
+      },  
+      animation: {
+        fadeInUp: 'fadeInUp 0.2s ease-out forwards', // Adjust duration/easing as needed
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' }, // Start slightly down and faded out
+          '100%': { opacity: '1', transform: 'translateY(0)' }, // End at normal position, fully opaque
+        },
       },
     },
   },

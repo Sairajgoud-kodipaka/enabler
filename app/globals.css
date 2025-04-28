@@ -26,3 +26,36 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Apply smooth scrolling behavior to the whole page */
+html {
+  scroll-behavior: smooth;
+  /* Ensure full height for body if needed */
+  height: 100%;
+}
+
+body {
+  /* Ensure full height if needed */
+  min-height: 100%;
+  /* Firefox - Hide scrollbar */
+  scrollbar-width: none;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) - Hide scrollbar */
+body::-webkit-scrollbar {
+  display: none; /* or width: 0; */
+}
+
+/* Optional: Apply smooth scroll to specific overflow containers if needed */
+.smooth-scroll-container {
+   scroll-behavior: smooth;
+}
+
+/* Optional: Hide scrollbar on specific containers */
+.hide-scrollbar {
+  /* Firefox */
+  scrollbar-width: none;
+  /* Webkit */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* or width: 0; */
+}

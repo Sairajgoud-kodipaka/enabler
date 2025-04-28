@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import dynamic from "next/dynamic";
+import BlogInsights from './components/BlogInsights';
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 // --- Updated Hero Slides Data ---
@@ -163,22 +164,6 @@ const highlights = [
   }
 ];
 
-// --- Blog Cards Data ---
-const blogCards = [
-    {
-        title: "GCC Trends 2024",
-        desc: "Latest trends in global capability centers"
-    },
-    {
-        title: "Digital Transformation",
-        desc: "How GCCs are driving digital innovation"
-    },
-    {
-        title: "Talent Management",
-        desc: "Best practices for GCC talent acquisition"
-    }
-];
-
 // --- Reveal Component ---
 const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
     return (
@@ -188,6 +173,8 @@ const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
     );
 };
 
+const emptyLottieUrl = "https://assets2.lottiefiles.com/packages/lf20_t24tpvcu.json";
+
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -195,6 +182,7 @@ export default function Home() {
   const progressInterval = useRef<NodeJS.Timeout | null>(null);
   const [openSolutionIndex, setOpenSolutionIndex] = useState<number|null>(null);
   const [lotties, setLotties] = useState([null, null, null, null]);
+  const [emptyLottie, setEmptyLottie] = useState(null);
 
   // Cleanup timer ref on unmount
   useEffect(() => {
@@ -243,6 +231,12 @@ export default function Home() {
   useEffect(() => {
     Promise.all(lottieUrls.map(url => fetch(url).then(res => res.json())))
       .then(setLotties);
+  }, []);
+
+  useEffect(() => {
+    fetch(emptyLottieUrl)
+      .then(res => res.json())
+      .then(setEmptyLottie);
   }, []);
 
   return (
@@ -373,59 +367,52 @@ export default function Home() {
 
       {/* --- Solutions Section --- */}
       <Reveal delay={0.2}>
-        <section className="relative py-20 md:py-28 bg-[#F8F9FB] overflow-hidden">
+        <section className="relative py-20 md:py-28 bg-[#F8F9FB] overflow-hidden rounded-3xl">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-[#0A1E40] ml-20 -mt-16  text-center mb-10">Our services</h1>
            <DotPatternBg />
-          <div className="relative z-10 max-w-7xl mx-auto px-4">
-            <div className="mb-12 md:mb-16 max-w-xl">
-                 <h2 className="text-lg font-semibold text-[#E94B8A] uppercase mb-2 tracking-wider">Our Solutions</h2>
-                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0A1E40] tracking-tight leading-tight">Power your operations with technology-first thinking.</h3>
-                 <p className="mt-4 text-base lg:text-lg text-gray-600">Build stronger teams and smarter operations with our tailored GCC enablement solutions.</p>
-            </div>
-            <div className="flex flex-col lg:flex-row gap-10 md:gap-14 min-h-[480px]">
-              <div className="w-full lg:w-[45%] xl:w-2/5 flex-shrink-0">
-                <div className="space-y-1 border rounded-lg shadow-sm bg-white overflow-hidden">
-                  {solutions.map((sol, index) => (
-                     <div key={sol.title} className="border-b last:border-b-0">
-                        <button
-                          onClick={() => { setOpenSolutionIndex(openSolutionIndex === index ? null : index) }}
-                          className="group w-full text-left px-5 py-4 flex justify-between items-center cursor-pointer hover:bg-gray-50/50 transition-colors duration-150"
-                          aria-expanded={openSolutionIndex === index}
-                          aria-controls={`solution-content-${index}`}
-                        >
-                          <h4 className={`font-semibold text-lg transition-colors duration-200 ${openSolutionIndex === index ? 'text-[#E94B8A]' : 'text-[#0A1E40]'}`}>
-                            {sol.title}
-                          </h4>
-                          <ChevronRight className={`w-5 h-5 transition-transform duration-300 ease-in-out flex-shrink-0 ${openSolutionIndex === index ? 'rotate-90 text-[#E94B8A]' : 'text-gray-400 group-hover:text-gray-600'}`} />
-                        </button>
-                        <div
-                           id={`solution-content-${index}`}
-                           className={`transition-all duration-300 ease-in-out overflow-hidden ${openSolutionIndex === index ? 'max-h-[300px]' : 'max-h-0'}`}
-                           aria-hidden={openSolutionIndex !== index}
-                         >
-                            <div className={`px-5 pb-4 pt-1 border-t border-gray-100 transition-opacity duration-300 ${openSolutionIndex === index ? 'opacity-100' : 'opacity-0'}`}>
-                                <p className="text-sm text-gray-700 leading-relaxed">{sol.desc}</p>
-                            </div>
-                         </div>
-                     </div>
-                  ))}
-                </div>
-              </div>
-              <div className="flex-1 w-full lg:w-[55%] xl:w-3/5 relative flex items-center justify-center">
-                 <div className="w-full h-80 lg:h-[450px] bg-gray-100 rounded-xl shadow-lg overflow-hidden relative border border-black/5">
-                    {openSolutionIndex !== null && solutions[openSolutionIndex] && (
-                        <div key={openSolutionIndex} className="absolute inset-0 animate-fadeIn duration-500">
-                             <Image
-                                src={solutions[openSolutionIndex].img}
-                                alt={solutions[openSolutionIndex].title}
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
+          <div className="relative z-8 max-w-7xl mx-auto px-4 flex flex-col lg:flex-row gap-10 md:gap-14 min-h-[480px] items-stretch justify-center">
+            {/* Left: Accordion */}
+            <div className="w-full lg:w-[45%] xl:w-2/5 flex-shrink-0 flex flex-col justify-center">
+              <div className="space-y-0 border rounded-xl shadow-lg bg-white overflow-hidden flex flex-col transition-all duration-300 min-h-[320px]">
+                {solutions.map((sol, index) => (
+                  <div key={sol.title} className={`border-b last:border-b-0 ${openSolutionIndex === index ? 'bg-gray-50 border-l-4 border-[#E94B8A]' : ''}`}>
+                    <button
+                      onClick={() => { setOpenSolutionIndex(openSolutionIndex === index ? null : index) }}
+                      className={`group w-full text-left px-6 py-6 flex justify-between items-center cursor-pointer transition-colors duration-150 font-semibold text-lg ${openSolutionIndex === index ? 'text-[#E94B8A]' : 'text-[#0A1E40] hover:bg-gray-50'}`}
+                      aria-expanded={openSolutionIndex === index}
+                      aria-controls={`solution-content-${index}`}
+                    >
+                      {sol.title}
+                      <ChevronRight className={`w-5 h-5 transition-transform duration-300 ease-in-out flex-shrink-0 ${openSolutionIndex === index ? 'rotate-90 text-[#E94B8A]' : 'text-gray-400 group-hover:text-gray-600'}`} />
+                    </button>
+                    {openSolutionIndex === index && (
+                      <div className="px-6 pb-6 pt-0 text-gray-700 text-base leading-relaxed animate-fadeIn">
+                        {sol.desc}
+                      </div>
                     )}
-                     {openSolutionIndex === null && (
-                        <div className="absolute inset-0 flex items-center justify-center text-gray-400">Select a solution to view details.</div>
-                     )}
-                 </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Right: Details */}
+            <div className="flex-1 w-full lg:w-[55%] xl:w-3/5 relative flex items-center justify-center">
+              <div className="w-full h-[300px] lg:h-[450px] bg-gray-100 rounded-xl shadow-lg overflow-hidden relative border border-black/5 flex flex-col items-center justify-center">
+                {openSolutionIndex !== null && solutions[openSolutionIndex] && (
+                  <div key={openSolutionIndex} className="absolute inset-0 animate-fadeIn duration-500">
+                    <Image
+                      src={solutions[openSolutionIndex].img}
+                      alt={solutions[openSolutionIndex].title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+                {openSolutionIndex === null && (
+                  <div className="flex flex-col items-center justify-center h-full w-full">
+                    {emptyLottie && <Lottie animationData={emptyLottie} loop autoplay style={{ width: 120, height: 120 }} />}
+                    <div className="mt-4 text-lg text-gray-500 font-medium">Select a solution to view details.</div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -463,22 +450,7 @@ export default function Home() {
 
       {/* Blog/Insights Section */}
       <Reveal delay={0.5}>
-        <section className="py-12 md:py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <h3 className="text-xl font-bold text-[#E94B8A] mb-6">Blog <span className="text-[#0A1E40]">Insights on GCC Trends</span></h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {blogCards.map((b, index) => (
-                <div key={index} className="bg-[#F8F9FB] rounded-xl shadow-md p-6 flex flex-col items-center hover:shadow-lg transition-shadow duration-200">
-                  <div className="w-full h-24 mb-3 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
-                    <BookOpen className="w-10 h-10 text-[#E94B8A]" />
-                  </div>
-                  <h4 className="text-[#0A1E40] font-semibold text-base mb-2 text-center">{b.title}</h4>
-                  <p className="text-[#7A2048] text-sm text-center">{b.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <BlogInsights />
       </Reveal>
 
       {/* Newsletter Section */}
@@ -495,42 +467,42 @@ export default function Home() {
       </Reveal>
 
       {/* Footer */}
-      <footer className="bg-[#0A1E40] text-white py-10 mt-8">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <footer className="w-full bg-[#0A1E40] text-white py-10 mt-8">
+        <div className="w-full px-4 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="text-2xl font-bold text-[#6C3EB8] mb-2">Enablr</div>
+            <div className="text-2xl font-bold text-[#ffffff] mb-2">Enablr</div>
             <div className="text-sm text-white/80 mb-4">Your GCC Enabling Catalyst</div>
           </div>
           <div>
             <div className="font-semibold mb-2">Solutions</div>
             <ul className="space-y-1 text-sm">
-              <li>GCC as a Service</li>
-              <li>Technology</li>
-              <li>Workspace</li>
-              <li>Talent & HR</li>
-              <li>Operations</li>
+              <li><Link href="/solutions/gcc-as-a-service" className="hover:underline">GCC as a Service</Link></li>
+              <li><Link href="/solutions/technology" className="hover:underline">Technology</Link></li>
+              <li><Link href="/solutions/workspace" className="hover:underline">Workspace</Link></li>
+              <li><Link href="/solutions/talent-hr" className="hover:underline">Talent & HR</Link></li>
+              <li><Link href="/solutions/operations" className="hover:underline">Operations</Link></li>
             </ul>
           </div>
           <div>
             <div className="font-semibold mb-2">Engagement Models</div>
             <ul className="space-y-1 text-sm">
-              <li>BOT</li>
-              <li>Modular Services</li>
-              <li>End-to-end management</li>
-              <li>Consulting</li>
+              <li><Link href="/engagement/bot" className="hover:underline">BOT</Link></li>
+              <li><Link href="/engagement/modular-services" className="hover:underline">Modular Services</Link></li>
+              <li><Link href="/engagement/end-to-end" className="hover:underline">End-to-end management</Link></li>
+              <li><Link href="/engagement/consulting" className="hover:underline">Consulting</Link></li>
             </ul>
           </div>
           <div>
             <div className="font-semibold mb-2">Company</div>
             <ul className="space-y-1 text-sm">
-              <li>About us</li>
-              <li>Careers</li>
-              <li>Contact</li>
-              <li>Insights</li>
+              <li><Link href="/about" className="hover:underline">About us</Link></li>
+              <li><Link href="/careers" className="hover:underline">Careers</Link></li>
+              <li><Link href="/contact" className="hover:underline">Contact</Link></li>
+              <li><Link href="/insights" className="hover:underline">Insights</Link></li>
             </ul>
           </div>
         </div>
-        <div className="text-center text-xs text-white/60 mt-8">© 2025 Enablr. All rights reserved.</div>
+        <div className="text-center text-xs text-white/60 mt-8 w-full">© 2025 Enablr. All rights reserved.</div>
       </footer>
 
       
