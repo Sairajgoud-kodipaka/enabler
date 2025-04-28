@@ -1,18 +1,26 @@
 "use client";
 
-// Add these imports to your main component file if not already present
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import type { Swiper as SwiperType } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
+
+// Dynamically import components that use browser APIs
+const BlogInsights = dynamic(() => import('./components/BlogInsights'), { ssr: false });
+const Swiper = dynamic(() => import('swiper/react').then(mod => mod.Swiper), { ssr: false });
+const SwiperSlide = dynamic(() => import('swiper/react').then(mod => mod.SwiperSlide), { ssr: false });
+
+// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
-import dynamic from "next/dynamic";
-import BlogInsights from './components/BlogInsights';
+
+// Import Swiper modules
+import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
+
+// Dynamically import Lottie
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 // --- Updated Hero Slides Data ---

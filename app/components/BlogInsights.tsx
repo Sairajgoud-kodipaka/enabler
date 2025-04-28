@@ -1,6 +1,11 @@
+"use client";
+
 import { useEffect, useState } from 'react';
-import Lottie from 'lottie-react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
+
+// Dynamically import Lottie with no SSR
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 // Updated Lottie animation URLs with public, reliable animations
 const LOTTIE_ANIMATIONS = {
